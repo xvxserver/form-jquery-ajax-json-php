@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>document</title>
 	<link rel="stylesheet" href="style.css">
-	<script src="jquery.js"></script>
+	<script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
 	<script src="function.js"></script>
 </head>
 <body>
@@ -18,8 +18,8 @@
 	</form>
 
 	<div id="status_1" style="display: none">
-		<div class="success">
-		<progress id="progressbar_1" value="0" max="100"></progress>
+		<div class="success" id="progress_1">
+			<progress id="progressbar_1" value="0" max="100"></progress>
 		</div>
 		<div id="result_1"></div>
 	</div>
