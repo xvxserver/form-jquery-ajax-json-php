@@ -23,14 +23,25 @@ input[type="submit"] {
 	cursor: pointer;
 }
 
+progress {
+	background: #fff;
+	border: 0;
+}
+
+progress::-moz-progress-bar{
+	background: #2544e4;
+}
+
 .danger {
 	position: relative;
 	background: #ff0000;
 	text-align: center;
+	height: 20px;
 }
 
 .success {
 	position: relative;
 	background: #00ffff;
 	text-align: center;
+	height: 20px;
 }
