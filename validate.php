@@ -1,5 +1,5 @@
 <?php
-	
+
 	if (empty($_POST["username"])) {
 		$output = json_encode(array(
 			'focus'=>'username',
@@ -21,10 +21,10 @@
 	}
 
 	$output = json_encode(array(
-		'focus'=>'0',
 		'class'=>'success',
-		'text' => $_POST["username"] . ' ' . $_POST["password"] . ' Listo.',
-		'check' => true
+		'text' => $_POST["username"] . ' ' . $_POST["password"] . ' Listo Redireccionando.',
+		'check' => true,
+		'redirect' => './'
 	));
 	die($output);
 
