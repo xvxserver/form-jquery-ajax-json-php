@@ -31,11 +31,11 @@ progress {
 	border: 0;
 }
 
-progress::-moz-progress-bar{
+progress::-moz-progress-bar {
 	background: #2544e4;
 }
 
-progress::-webkit-progress-bar{
+progress::-webkit-progress-value {
 	background: #2544e4;
 }
 
