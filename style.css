@@ -24,7 +24,10 @@ input[type="submit"] {
 }
 
 progress {
+	position: relative;
+	top: 1px;
 	background: #fff;
+	height: 20px;
 	border: 0;
 }
 
@@ -32,16 +35,22 @@ progress::-moz-progress-bar{
 	background: #2544e4;
 }
 
+progress::-webkit-progress-bar{
+	background: #2544e4;
+}
+
 .danger {
 	position: relative;
 	background: #ff0000;
+	height: 30px;
 	text-align: center;
-	height: 20px;
+	line-height: 30px;
 }
 
 .success {
 	position: relative;
 	background: #00ffff;
+	height: 30px;
 	text-align: center;
-	height: 20px;
+	line-height: 30px;
 }
