@@ -1,0 +1,36 @@
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+section {
+	position: relative;
+	margin: 20px auto;
+	width: 200px;
+	height: auto;
+	border: 1px solid #000;
+}
+
+input[type="text"] {
+	margin: 5px;
+	width: 185px;
+}
+
+input[type="submit"] {
+	margin: 5px;
+	width: 190px;
+	cursor: pointer;
+}
+
+.danger {
+	position: relative;
+	background: #ff0000;
+	text-align: center;
+}
+
+.success {
+	position: relative;
+	background: #00ffff;
+	text-align: center;
+}
