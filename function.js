@@ -10,7 +10,7 @@ $(document).on('ready', function() {
 			var submit_text = $(submit_button).attr("value");
 			$('#status_' + total_id).show();
 			$('#result_' + total_id).hide().html('');
-			$('#progressbar_' + total_id).show();
+			$('#progress_' + total_id).show();
 			$('#progressbar_' + total_id).attr('value', '0');
 
 			$.ajax({
@@ -25,7 +25,7 @@ $(document).on('ready', function() {
 				complete: function() {
 					$('#progressbar_' + total_id).attr('value', '100');
 					setTimeout(function() {
-						$('#progressbar_' + total_id).hide();
+						$('#progress_' + total_id).hide();
 						$('#result_' + total_id).show();
 						$(submit_button).removeAttr('disabled').val(submit_text).blur();
 					}, 500);
@@ -39,7 +39,7 @@ $(document).on('ready', function() {
 					$('#' + data.focus).focus();
 					$('#result_' + total_id).html('<div class="' + data.class + '">' + data.text + '</div>');
 					if (data.check) {
-						console.log('si');
+						setTimeout("location.href='" + data.redirect + "'", 1000);
 					}
 				}
 			});
