@@ -4,7 +4,7 @@
 		$output = json_encode(array(
 			'focus'=>'username',
 			'class'=>'danger',
-			'text' => 'Campo Usuario Está Vacío.',
+			'text' => 'Empy Username.',
 			'check' => false
 		));
 		die($output);
@@ -14,7 +14,7 @@
 		$output = json_encode(array(
 			'focus'=>'password',
 			'class'=>'danger',
-			'text' => 'Campo Contraseña Está Vacío.',
+			'text' => 'Empty Password.',
 			'check' => false
 		));
 		die($output);
@@ -22,7 +22,7 @@
 
 	$output = json_encode(array(
 		'class'=>'success',
-		'text' => $_POST["username"] . ' ' . $_POST["password"] . ' Listo Redireccionando.',
+		'text' => $_POST["username"] . ' | ' . $_POST["password"],
 		'check' => true,
 		'redirect' => './'
 	));
