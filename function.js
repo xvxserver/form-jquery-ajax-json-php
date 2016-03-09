@@ -8,38 +8,56 @@ $(document).on('ready', function() {
 			var total_id = $(this).attr('id').replace('form_', '');	
 			var submit_button = $('#form_' + total_id).find('#submit_' + total_id);
 			var submit_text = $(submit_button).attr("value");
-			$('#status_' + total_id).show();
-			$('#result_' + total_id).hide().html('');
-			$('#progress_' + total_id).show();
-			$('#progressbar_' + total_id).attr('value', '0');
+			var div_status = $('#status_' + total_id);
+			var div_progress = $('#progressbar_' + total_id);
+			var div_result = $('#result_' + total_id);
+			var type = $(this).attr('method');
+			var action = $(this).attr('action');
+			var data = $(this).serialize();
+
+			div_status.addClass('success').show();
+			div_result.hide().html('');
+			div_progress.attr('value', '0').show();
 
 			$.ajax({
-				type: $(this).attr('method'),
-				url: $(this).attr('action'), 
-				data: $(this).serialize(),
+				type: type,
+				url: action, 
+				data: data,
 				dataType: 'json',
 				beforeSend: function() {
-					$(submit_button).attr("disabled", "disabled").val('Espere...');
-					$('#progressbar_' + total_id).attr('value', '50');
+					$(submit_button).attr("disabled", "disabled").val('Wait...');
+					div_progress.animate({
+						value: 50
+					}, 500);
 				},
 				complete: function() {
-					$('#progressbar_' + total_id).attr('value', '100');
-					setTimeout(function() {
-						$('#progress_' + total_id).hide();
-						$('#result_' + total_id).show();
-						$(submit_button).removeAttr('disabled').val(submit_text).blur();
+					div_progress.animate({
+						value: 100
 					}, 500);
+					setTimeout(function() {
+						div_progress.hide();
+						div_result.show();
+						$(submit_button).removeAttr('disabled').val(submit_text).blur();
+					}, 1000);
 				},
 				error: function() {
 					setTimeout(function() {
-						$('#result_' + total_id).html('<div class="danger">Página Form No Existe</div>');
+						div_result.html('<div class="danger">Error Form</div>');
 					}, 500);
 				},
 				success: function(data) {
 					$('#' + data.focus).focus();
-					$('#result_' + total_id).html('<div class="' + data.class + '">' + data.text + '</div>');
+					div_result.html('<div class="' + data.class + '">' + data.text + '</div>');
 					if (data.check) {
-						setTimeout("location.href='" + data.redirect + "'", 1000);
+						setTimeout(function() {
+							div_result.hide().html('');
+							div_progress.attr('value', '0').show();
+							div_progress.animate({
+								value: 100
+							}, 1000, function() {
+								setTimeout("location.href='" + data.redirect + "'", 0);
+							});
+						}, 2000);
 					}
 				}
 			});
