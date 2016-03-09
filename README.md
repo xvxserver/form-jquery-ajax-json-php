@@ -1,2 +1,2 @@
-# form-jquery-ajax-json-php
+# form-jquery-ajax-json-progressbar-php
 Form Jquery ProgressBar
