@@ -25,7 +25,7 @@ $(document).on('ready', function() {
 				data: data,
 				dataType: 'json',
 				beforeSend: function() {
-					$(submit_button).attr("disabled", "disabled").val('Wait...');
+					$(submit_button).prop( "disabled", true).val('Wait...');
 					div_progress.animate({
 						value: 50
 					}, 500);
@@ -33,12 +33,11 @@ $(document).on('ready', function() {
 				complete: function() {
 					div_progress.animate({
 						value: 100
-					}, 500);
-					setTimeout(function() {
+					}, 500, function() {
 						div_progress.hide();
 						div_result.show();
-						$(submit_button).removeAttr('disabled').val(submit_text).blur();
-					}, 1000);
+						$(submit_button).prop( "disabled", false).val(submit_text).blur();
+					});
 				},
 				error: function() {
 					setTimeout(function() {
@@ -49,6 +48,10 @@ $(document).on('ready', function() {
 					$('#' + data.focus).focus();
 					div_result.html('<div class="' + data.class + '">' + data.text + '</div>');
 					if (data.check) {
+						setInterval(function() {
+							$('input').prop( "disabled", true);
+							$(submit_button).prop( "disabled", true).val('Wait...');
+						}, 1);
 						setTimeout(function() {
 							div_result.hide().html('');
 							div_progress.attr('value', '0').show();
